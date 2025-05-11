@@ -1,0 +1,302 @@
+{
+	"info": {
+		"_postman_id": "a648ff6c-09cc-4900-b9f4-2b766a6fc375",
+		"name": "Asiento",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38652277"
+	},
+	"item": [
+		{
+			"name": "Crear Asiento 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"asiento_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fila\": \"A\",\r\n  \"numero\": 1,\r\n  \"disponible\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos"
+			},
+			"response": []
+		},
+		{
+			"name": "Crear asiento 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"asiento_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fila\": \"B\",\r\n  \"numero\": 5,\r\n  \"disponible\": false\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Todos Los Asientos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of asientos > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Asiento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Actualizar Asiento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fila\": \"A\",\r\n    \"numero\": 1,\r\n    \"disponible\": false,\r\n    \"ubicacion\": \"Platea Central\",\r\n    \"boleto\": {\r\n        \"id\": 201,\r\n        \"precio\": 120000,\r\n        \"categoria\": \"General\"\r\n    }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Consultar Disponibilidad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_1}}/disponibilidad"
+			},
+			"response": []
+		},
+		{
+			"name": "Cambiar Disponibilidad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_2}}/disponibilidad?disponibilidad=true",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"{{teatro_id_1}}",
+						"asientos",
+						"{{asiento_id_2}}",
+						"disponibilidad"
+					],
+					"query": [
+						{
+							"key": "disponibilidad",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Asiento 2",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_2}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Asiento 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\":  \"Asiento eliminado correctamente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_1}}"
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar Asiento 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\":  \"Asiento eliminado correctamente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/teatros/{{teatro_id_1}}/asientos/{{asiento_id_2}}"
+			},
+			"response": []
+		}
+	]
+}

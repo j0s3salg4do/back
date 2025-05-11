@@ -1,0 +1,168 @@
+{
+	"info": {
+		"_postman_id": "1574f6a1-76bd-4ec3-a610-c045530e9226",
+		"name": "Resena",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41769046"
+	},
+	"item": [
+		{
+			"name": "crear resena",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"resena_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"comentario\": \"Muy buena obra, los felicito\",\r\n  \"calificacion\": 5,\r\n  \"cliente\": { \"id\": 1 },\r\n  \"teatro\": {\"id\": 1},\r\n  \"obraDeTeatro\": { \"id\": 1 }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resenas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener todas las resenas",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resenas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener resena",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/resenas/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar resena",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"calificacion\": 4,\r\n    \"comentario\": \"Muy buena experiencia\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resenas/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar resena",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/resenas/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"resenas",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

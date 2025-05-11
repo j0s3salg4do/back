@@ -1,0 +1,645 @@
+{
+	"info": {
+		"_postman_id": "031e1cd7-1ebe-4d91-9813-e7c8523be525",
+		"name": "Teatro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41769046"
+	},
+	"item": [
+		{
+			"name": "crear teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"teatro_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreTeatro\": \"Cinemateca\",\r\n    \"direccionTeatro\": \"City U\",\r\n    \"capacidad\": 150\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "resenas teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"comentario\": \"Excelente trabajo\",\r\n    \"calificacion\": 5,\r\n    \"teatroId\": 1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/resenas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"resenas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Evento Especial teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreEvento\": \"Fiesta Juan Andres\",\r\n    \"descripcionEvento\": \"Fiesta llena de descontrol\",\r\n    \"fecha\": \"2025-04-10T20:00:00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/eventosEspeciales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"eventosEspeciales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "funcion teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fecha\": \"2025-04-10\",\r\n    \"hora\": \"19:30\",\r\n    \"obraDeTeatro\": {\r\n    \"id\": 1,\r\n    \"titulo\": \"Romeo y Julieta\",\r\n    \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n    \"genero\": \"Drama\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n    \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener todos los teatros",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar teatro nombre",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/nombre/Cinemateca",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"nombre",
+						"Cinemateca"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar teatro capacidad",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/capacidad/150",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"capacidad",
+						"150"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "buscar teatro direccion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/direccion/City U",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"direccion",
+						"City U"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener resenas teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/resenas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"resenas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Eventos espciales teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/eventosEspeciales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"eventosEspeciales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener funciones teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizar teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function() {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nombreTeatro\": \"Teatro Colón\",\r\n    \"direccionTeatro\": \"Calle 10 #5-332\",\r\n    \"capacidad\": 773\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"message\":  \"teatro eliminado correctamente\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar eventos especiales teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/eventosEspeciales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"eventosEspeciales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar resenas teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/resenas",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"resenas"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar funcion teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/teatros/1/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"teatros",
+						"1",
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

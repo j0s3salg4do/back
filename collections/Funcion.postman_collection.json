@@ -1,0 +1,423 @@
+{
+	"info": {
+		"_postman_id": "4f809f64-b2d4-4f08-ac49-40bfd9319244",
+		"name": "Funcion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41557320"
+	},
+	"item": [
+		{
+			"name": "Crear una funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"funcion_id_1\", data.id)\r",
+							"pm.globals.set(\"funcion_fecha_1\", data.fecha)\r",
+							"pm.globals.set(\"funcion_hora_1\", data.hora)\r",
+							"pm.globals.set(\"funcion_obra_1_id\", data.obraDeTeatro.id);\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fecha\": \"2025-04-10\",\r\n  \"hora\": \"19:30\",\r\n  \"obraDeTeatro\": {\r\n    \"id\": 1,\r\n    \"titulo\": \"Romeo y Julieta\",\r\n    \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n    \"genero\": \"Drama\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n    \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n  },\r\n  \"teatro\": {\r\n    \"id\": 1,\r\n    \"nombreTeatro\": \"Cinemateca\",\r\n    \"direccionTeatro\": \"City U\",\r\n    \"capacidad\": 150\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear funcion 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"funcion_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fecha\": \"2025-04-10\",\r\n  \"hora\": \"22:30\",\r\n  \"obraDeTeatro\":{\r\n    \"id\": 1,\r\n    \"titulo\": \"Romeo y Julieta\",\r\n    \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n    \"genero\": \"Drama\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n    \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n  },\r\n  \"teatro\": {\r\n    \"id\": 1,\r\n    \"nombreTeatro\": \"Cinemateca\",\r\n    \"direccionTeatro\": \"City U\",\r\n    \"capacidad\": 150\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener una funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/funciones/{{funcion_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones",
+						"{{funcion_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener funciones por hora",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/funciones/hora/{{funcion_hora_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones",
+						"hora",
+						"{{funcion_hora_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las funciones",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of functions > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/funciones",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener funcion inexistente",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 404\", function () {\r",
+							"   pm.response.to.have.status(404);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/functions/0",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"functions",
+						"0"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener boletos de una funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "/funciones/{ifuncion_id_1}}/boletos",
+					"path": [
+						"funciones",
+						"{ifuncion_id_1}}",
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fecha\": \"2025-04-10\",\r\n  \"hora\": \"21:30\",\r\n  \"obraDeTeatro\": {\r\n    \"id\": 1,\r\n    \"titulo\": \"Hamlet\",\r\n    \"genero\": \"Tragedia\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"El príncipe Hamlet busca vengar la muerte de su padre.\",\r\n    \"elenco\": \"Juan Pérez, María Gómez, Carlos Sánchez\"\r\n  },\r\n  \"teatro\": {\r\n    \"id\": 202,\r\n    \"nombreTeatro\": \"Teatro Nacional\",\r\n    \"direccionTeatro\": \"Calle 123, Bogotá\",\r\n    \"capacidad\": 500\r\n  }\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/funciones/{{funcion_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones",
+						"{{funcion_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar funcion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/funciones/{{funcion_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones",
+						"{{funcion_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar funcion 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/funciones/{{funcion_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"funciones",
+						"{{funcion_id_2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

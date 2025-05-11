@@ -1,0 +1,363 @@
+{
+	"info": {
+		"_postman_id": "cc6df384-fa05-4e0b-9e56-f55113d563db",
+		"name": "ObraDeTeatro",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41769046"
+	},
+	"item": [
+		{
+			"name": "crear obra de teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.globals.set(\"odt_id_1\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Pruebas 2\",\r\n    \"descripcion\": \"Una obra de amor y destino.\",\r\n    \"genero\": \"Drama\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"Una historia de familias rivales\",\r\n    \"elenco\": \"Juan Moreno, Felipe\",\r\n    \"imagen\": \"https://example.com/imagen.jpg\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Obras de Teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener obra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarObra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"titulo\": \"Felipe y Taka\",\r\n    \"descripcion\": \"Una obra clásica de amor y fmc.\",\r\n    \"genero\": \"Drama\",\r\n    \"duracion\": 120,\r\n    \"sinopsis\": \"Una historia de amor entre 2 personas de familias rivales\",\r\n    \"elenco\": \"Taka, Felipe Boada\",\r\n    \"imagen\": \"https://example.com/imagen.jpg\"\r\n\r\n\r\n\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar Obra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ODT por ID",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/3\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"3\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "FuncionAsociacion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/3/funciones/1\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"3",
+						"funciones",
+						"1\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getFuncion",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/3\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"3\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AsociacionResena",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/3/resenas/2\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"3",
+						"resenas",
+						"2\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerResenas",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/obrasDeTeatro/3\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"obrasDeTeatro",
+						"3\n"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,54 @@
+{
+	"info": {
+		"_postman_id": "cfa55ee1-dec9-493f-969e-62dc7711f5b4",
+		"name": "Pago",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38652277"
+	},
+	"item": [
+		{
+			"name": "Pocesar Pago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"metodoPago\": \"Tarjeta de crédito\",\r\n  \"monto\": 100000,\r\n  \"boletos\": null\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/pagos"
+			},
+			"response": []
+		},
+		{
+			"name": "Registar un Pago",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"metodoPago\": \"PSE\",\r\n    \"monto\": 50000.0,\r\n    \"boletos\": null\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "{{baseUrl}}/pagos"
+			},
+			"response": []
+		},
+		{
+			"name": "Verificar Exito",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

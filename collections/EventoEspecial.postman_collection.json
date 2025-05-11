@@ -1,0 +1,421 @@
+{
+	"info": {
+		"_postman_id": "1229f12f-56f3-4558-bbf5-1bfc3ca7acf9",
+		"name": "EventoEspecial",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41941643"
+	},
+	"item": [
+		{
+			"name": "crearEvento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Evento creado correctamente\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.have.property(\"id\");\r",
+							"    pm.environment.set(\"eventoId\", json.id);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"nombreEvento\": \"Fiesta More\",\r\n    \"descripcionEvento\": \"Una gran fiesta imperdible, llena de acción y felicidad\",\r\n    \"fecha\": \"2025-04-15T18:00:00Z\"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Eventos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Eventos obtenidos correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "obtener Evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Evento obtenido por ID correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.id).to.eql(parseInt(pm.environment.get(\"eventoId\")));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "actualizarEvento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Evento actualizado correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.have.property(\"id\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{    \"nombreEvento\": \"Fiesta Felipe\",\r\n    \"descripcionEvento\": \"Una gran fiesta imperdible, llena de amor y felicidad\",\r\n    \"fecha\": \"2025-04-15T18:00:00Z\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "borrar evento",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Evento eliminado correctamente\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar Teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Teatro asociado correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.have.property(\"teatro\");\r",
+							"    pm.expect(json.teatro.id).to.eql(parseInt(pm.environment.get(\"teatroId\")));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/2/teatro/1\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"2",
+						"teatro",
+						"1\n"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get Teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.globals.set(\"teatro_id_evento\", data.id);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/1",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Desasociar Teatro",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Teatro desasociado correctamente\", function () {\r",
+							"    pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/2/teatro",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"2",
+						"teatro"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Asociar Boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Boleto asociado correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json.boletos).to.be.an(\"array\");\r",
+							"    const id = parseInt(pm.environment.get(\"boletoId\"));\r",
+							"    pm.expect(json.boletos.some(b => b.id === id)).to.be.true;\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/1/boletos/6",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"1",
+						"boletos",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ObtenerBoleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Boletos del evento obtenidos correctamente\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const json = pm.response.json();\r",
+							"    pm.expect(json).to.be.an(\"array\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EventoPorId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json();\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.globals.set(\"evento_id\", data.id);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/eventosEspeciales/2\n",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"eventosEspeciales",
+						"2\n"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,366 @@
+{
+	"info": {
+		"_postman_id": "4197cf9c-a3a0-4621-8037-966d51f07e7e",
+		"name": "Boleto",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41557320"
+	},
+	"item": [
+		{
+			"name": "Crear un boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"boleto_id_1\", data.id)\r",
+							"pm.globals.set(\"boleto_silla_1\", data.silla);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"precio\": 35000.00,\r\n  \"funcion\": {\r\n    \"id\": 1,\r\n    \"fecha\": \"2025-04-10\",\r\n    \"hora\": \"19:30\",\r\n    \"obraDeTeatro\": {\r\n      \"id\": 1,\r\n      \"titulo\": \"Romeo y Julieta\",\r\n      \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n      \"genero\": \"Drama\",\r\n      \"duracion\": 120,\r\n      \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n      \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n    },\r\n    \"teatro\": {\r\n        \"nombreTeatro\": \"Cinemateca\",\r\n        \"direccionTeatro\": \"City U\",\r\n        \"capacidad\": 150\r\n    }\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1,\r\n    \"nombreUsuario\": \"Saray test\",\r\n    \"correoUsuario\": \"Saraytest@uniandes.edu.co\",\r\n    \"contrasenaUsuario\": \"12345\"\r\n  },\r\n  \"silla\": {\r\n    \"id\": 1,\r\n    \"fila\": \"A\",\r\n    \"numero\": 1,\r\n    \"disponible\": true\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/boletos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Crear boleto 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var data = pm.response.json()\r",
+							"pm.globals.set(\"boleto_id_2\", data.id);\r",
+							"\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"   pm.response.to.have.status(201);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"precio\": 50000.00,\r\n  \"funcion\": {\r\n    \"id\": 1,\r\n    \"fecha\": \"2025-04-10\",\r\n    \"hora\": \"19:30\",\r\n    \"obraDeTeatro\":  {\r\n      \"id\": 1,\r\n      \"titulo\": \"Romeo y Julieta\",\r\n      \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n      \"genero\": \"Drama\",\r\n      \"duracion\": 120,\r\n      \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n      \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n    },\r\n     \"teatro\": {\r\n        \"nombreTeatro\": \"Cinemateca\",\r\n        \"direccionTeatro\": \"City U\",\r\n        \"capacidad\": 150\r\n    }\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1,\r\n    \"nombreUsuario\": \"Saray test\",\r\n    \"correoUsuario\": \"Saraytest@uniandes.edu.co\",\r\n    \"contrasenaUsuario\": \"12345\"\r\n  },\r\n  \"silla\": {\r\n    \"id\": 2,\r\n    \"fila\": \"B\",\r\n    \"numero\": 5,\r\n    \"disponible\": false\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/boletos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener un boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener silla de un boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_1}}/silla",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_1}}",
+						"silla"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener funcion de un boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_1}}/funcion",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_1}}",
+						"funcion"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los boletos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Number of boletos > ' + 0, function () {\r",
+							"   var data = pm.response.json()\r",
+							"   pm.expect(data.length).to.greaterThan(0)\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Editar boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"   pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"precio\": 20000.00,\r\n  \"funcion\": {\r\n    \"id\": 1,\r\n    \"fecha\": \"2025-04-10\",\r\n    \"hora\": \"19:30\",\r\n    \"obraDeTeatro\":  {\r\n      \"id\": 1,\r\n      \"titulo\": \"Romeo y Julieta\",\r\n      \"descripcion\": \"Una obra clásica de amor y destino.\",\r\n      \"genero\": \"Drama\",\r\n      \"duracion\": 120,\r\n      \"sinopsis\": \"Una historia de amor entre 2 jóvenes de familias rivales\",\r\n      \"elenco\": \"Juan Moreno, Felipe Boada\"\r\n    },\r\n     \"teatro\": {\r\n        \"nombreTeatro\": \"Cinemateca\",\r\n        \"direccionTeatro\": \"City U\",\r\n        \"capacidad\": 150\r\n    }\r\n  },\r\n  \"cliente\": {\r\n    \"id\": 1,\r\n    \"nombreUsuario\": \"Saray test\",\r\n    \"correoUsuario\": \"Saraytest@uniandes.edu.co\",\r\n    \"contrasenaUsuario\": \"12345\"\r\n  },\r\n  \"silla\": {\r\n    \"id\": 2,\r\n    \"fila\": \"B\",\r\n    \"numero\": 5,\r\n    \"disponible\": false\r\n  }\r\n}\r\n\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar boleto",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_1}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Eliminar boleto 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 204\", function () {\r",
+							"   pm.response.to.have.status(204);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/boletos/{{boleto_id_2}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"boletos",
+						"{{boleto_id_2}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
